@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management</title>
+    <meta http-equiv="origin-trial" content="AjlQd1gzqSlgL0m5R6UzX/seK2l6d/hMbVbGovm8B6qc+3TnwuEGUPIH6I4mYzmWZ70latoevq/81DC5oqV6FgQAAABKeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjYzMzQyIiwiZmVhdHVyZSI6IldlYlNRTCIsImV4cGlyeSI6MTcxNjk0MDc5OX0=">
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <script src="js/lib/jquery.validate.js"></script>
+    <script src="js/facade.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/DAL.js"></script>
+    <script src="js/hospitalclass.js"></script>
+    <script src="js/geo.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <link rel="stylesheet" href="./css/lib/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div data-role="page" id="home" class="center-content">
+    <div data-role="header" data-theme="a">
+        <div class="header-content">
+            <div class="header-section">
+                <h3>Harmony Healthcare Institute</h3>
+                <p>Experienced And Excellence in Healthcare</p>
+                <nav data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#home" data-transition="slide" data-icon="home" class="ui-btn-active">Home</a></li>
+                        <li><a href="#doctorInfo" data-transition="slide" data-icon="user">Staff Information</a></li>
+                        <li><a href="#services" data-transition="slide" data-icon="grid">Services</a></li>
+                        <li><a href="#appointment" data-transition="slide" data-icon="calendar">Appointment</a></li>
+                        <li><a href="#viewAppointment" data-transition="slide" data-icon="bars">View Appointment</a></li>
+                        <li><a href="#about" data-transition="slide" data-icon="info">About</a></li>
+                        <li><a href="#map-page" data-transition="slide" data-icon="location">Locations</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <div data-role="main" class="ui-content center-content">
+        <div class="half-width">
+            <img src="img/hospital.jpg" alt="Hospital Photo">
+        </div>
+        <div class="half-width">
+            <h2>Welcome to Harmony Healthcare Institute</h2>
+            <p>Experienced and Excellence in Healthcare. Providing state-of-the-art medical care for our patients.
+                Harmony Healthcare Institute stands as a beacon of exceptional medical care, offering a comprehensive range of specialized services and pioneering treatments.
+                With a legacy of compassionate care spanning decades, our institute embodies excellence in healthcare delivery.
+                Our state-of-the-art facilities are complemented by a team of dedicated healthcare professionals committed to providing personalized attention and cutting-edge treatments.
+                From advanced diagnostics to specialized treatments in cardiology, neurology, orthopedics, and beyond, we prioritize patient well-being, ensuring every individual receives the highest quality of care and support.
+            </p>
+            <br>
+            <h2>We have all these following departments:</h2>
+            <form>
+                <label for="department">Click to see all departments:</label>
+                <select id="department" name="department" data-native-menu="false">
+                    <option value="1">Cardiology</option>
+                    <option value="2">Orthopedics</option>
+                    <option value="3">Neurology</option>
+                    <option value="4">Oncology</option>
+                    <option value="5">Gastroenterology</option>
+                    <option value="6">Pulmonology</option>
+                    <option value="7">Dermatology</option>
+                    <option value="8">Urology</option>
+                    <option value="9">Ophthalmology</option>
+                    <option value="10">Obstetrics & Gynecology</option>
+                </select>
+            </form>
+        </div>
+
+        <section class="famous-doctors">
+            <h2>Our Top Doctors</h2>
+            <div class="doctor">
+                <div class="doctor-info">
+                    <img src="img/doctor1.jpg" alt="Doctor 1">
+                    <h3>Dr. John Smith</h3>
+                    <p>Renowned cardiologist specializing in heart disease prevention and treatment.</p>
+                </div>
+                <div class="doctor-info">
+                    <img src="img/doctor2.jpg" alt="Doctor 2">
+                    <h3>Dr. Emily Johnson</h3>
+                    <p>Leading neurologist known for her expertise in treating neurological disorders.</p>
+                </div>
+                <div class="doctor-info">
+                    <img src="img/doctor3.jpg" alt="Doctor 3">
+                    <h3>Dr. Michael Davis</h3>
+                    <p>Expert orthopedic surgeon focusing on joint replacement and sports injuries.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+        <div class="footer-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>123 Victoria St.<br>Kitchener, ON N2N 0A1</p>
+                <p>Phone: 948-123-5670<br>Email: harmonyhealth@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="appointment">
+    <div data-role="header" data-theme="a">
+        <div class="header-content">
+            <div class="header-section">
+                <h3>Harmony Healthcare Institute</h3>
+                <p>Experienced And Excellence in Healthcare</p>
+                <nav data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+                        <li><a href="#doctorInfo" data-transition="slide" data-icon="user">Staff Information</a></li>
+                        <li><a href="#services" data-transition="slide" data-icon="grid">Services</a></li>
+                        <li><a href="#appointment" data-transition="slide" data-icon="calendar" class="ui-btn-active">Appointment</a></li>
+                        <li><a href="#viewAppointment" data-transition="slide" data-icon="bars">View Appointment</a></li>
+                        <li><a href="#about" data-transition="slide" data-icon="info">About</a></li>
+                        <li><a href="#map-page" data-transition="slide" data-icon="location">Locations</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div role="main" class="ui-content center-content">
+        <h3>Book New Appointment</h3>
+        <div class="collapse">
+            <form id="frmAddAppointment">
+                <label for="fullname">Full Name:</label>
+                <input type="text" name="fullname" id="fullname">
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email">
+
+                <label for="phone">Phone:</label>
+                <input type="text" name="phone" id="phone">
+
+                <label for="appointmentdate">Preferred Appointment Date and time:</label>
+                <input type="datetime-local" name="appointmentdate" id="appointmentdate">
+
+                <label for="department1">Select departments:</label>
+                <select id="department1" name="department1" data-native-menu="false">
+                    <option value="1">Cardiology</option>
+                    <option value="2">Orthopedics</option>
+                    <option value="3">Neurology</option>
+                    <option value="4">Oncology</option>
+                    <option value="5">Gastroenterology</option>
+                    <option value="6">Pulmonology</option>
+                    <option value="7">Dermatology</option>
+                    <option value="8">Urology</option>
+                    <option value="9">Ophthalmology</option>
+                    <option value="10">Obstetrics & Gynecology</option>
+                </select>
+
+                <label for="message">Additional Message:</label>
+                <textarea name="message" id="message"></textarea>
+
+                <button type="submit" id="btnAddAppointment" name="btnAddAppointment" class="ui-btn ui-btn-b ui-corner-all">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+        <div class="footer-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>123 Victoria St.<br>Kitchener, ON N2N 0A1</p>
+                <p>Phone: 948-123-5670<br>Email: harmonyhealth@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="appointmentUpdate">
+    <div data-role="header" data-theme="a">
+        <div class="header-content">
+            <div class="header-section">
+                <h3>Harmony Healthcare Institute</h3>
+                <p>Experienced And Excellence in Healthcare</p>
+                <nav data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <ul>
+                            <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+                            <li><a href="#doctorInfo" data-transition="slide" data-icon="user">Staff Information</a></li>
+                            <li><a href="#services" data-transition="slide" data-icon="grid">Services</a></li>
+                            <li><a href="#appointment" data-transition="slide" data-icon="calendar">Appointment</a></li>
+                            <li><a href="#viewAppointment" data-transition="slide" data-icon="bars" class="ui-btn-active">View Appointment</a></li>
+                            <li><a href="#about" data-transition="slide" data-icon="info">About</a></li>
+                            <li><a href="#map-page" data-transition="slide" data-icon="location">Locations</a></li>
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="main" class="ui-content center-content">
+        <form id="frmModifyAppointment" class="collapse">
+            <label for="fullname1">Full Name:</label>
+            <input type="text" name="fullname1" id="fullname1">
+
+            <label for="email1">Email:</label>
+            <input type="email" name="email1" id="email1">
+
+            <label for="phone1">Phone:</label>
+            <input type="number" name="phone1" id="phone1">
+
+            <label for="appointmentdate1">Preferred Appointment Date and time:</label>
+            <input type="datetime-local" name="appointmentdate1" id="appointmentdate1">
+
+            <label for="department2">Select departments:</label>
+            <select id="department2" name="department2" data-native-menu="false">
+                <option value="1">Cardiology</option>
+                <option value="2">Orthopedics</option>
+                <option value="3">Neurology</option>
+                <option value="4">Oncology</option>
+                <option value="5">Gastroenterology</option>
+                <option value="6">Pulmonology</option>
+                <option value="7">Dermatology</option>
+                <option value="8">Urology</option>
+                <option value="9">Ophthalmology</option>
+                <option value="10">Obstetrics & Gynecology</option>
+            </select>
+
+            <label for="message1">Additional Message:</label>
+            <textarea name="message1" id="message1"></textarea>
+
+            <div data-role="controlgroup" data-type="horizontal" class="buttons">
+                <button type="submit" id="btnCancel" name="btnCancel" data-theme="a">Cancel</button>
+                <button type="submit" id="btnDelete" name="btnDelete" data-theme="b">Delete</button>
+                <button type="submit" id="btnUpdate" name="btnUpdate" class="ui-btn-active"> Update </button>
+            </div>
+        </form>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+        <div class="footer-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>123 Victoria St.<br>Kitchener, ON N2N 0A1</p>
+                <p>Phone: 948-123-5670<br>Email: harmonyhealth@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="doctorInfo">
+    <div data-role="header" data-theme="a">
+        <div class="header-content">
+            <div class="header-section">
+                <h3>Harmony Healthcare Institute</h3>
+                <p>Experienced And Excellence in Healthcare</p>
+                <nav data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <ul>
+                            <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+                            <li><a href="#doctorInfo" data-transition="slide" data-icon="user" class="ui-btn-active">Staff Information</a></li>
+                            <li><a href="#services" data-transition="slide" data-icon="grid">Services</a></li>
+                            <li><a href="#appointment" data-transition="slide" data-icon="calendar">Appointment</a></li>
+                            <li><a href="#viewAppointment" data-transition="slide" data-icon="bars">View Appointment</a></li>
+                            <li><a href="#about" data-transition="slide" data-icon="info">About</a></li>
+                            <li><a href="#map-page" data-transition="slide" data-icon="location">Locations</a></li>
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="doctor1">
+        <img src="img/doctor1.jpg" alt="Doctor 1">
+        <div class="doctor-details">
+            <h2>Dr. John Smith</h2>
+            <p>Dr. John Smith specializes in cardiology and has extensive experience in treating heart-related conditions. She is known for her compassionate approach and dedication to patient care.</p>
+            <p>Services: Cardiology, Heart Health</p>
+        </div>
+    </div>
+
+    <div class="doctor1">
+        <img src="img/doctor2.jpg" alt="Doctor 2">
+        <div class="doctor-details">
+            <h2>Dr. Emily Johnson</h2>
+            <p>Dr. Emily Johnson is an orthopedic surgeon with a focus on sports injuries and joint replacements. He is committed to helping patients regain mobility and functionality.</p>
+            <p>Services: Orthopedics, Sports Injuries</p>
+        </div>
+    </div>
+
+    <div class="doctor1">
+        <img src="img/doctor3.jpg" alt="Doctor 3">
+        <div class="doctor-details">
+            <h2>Dr. Michael Davis</h2>
+            <p>Dr. Michael Davis is a renowned psychiatrist specializing in mental health and behavioral therapy. She provides personalized treatment plans for her patients.</p>
+            <p>Services: Psychiatry, Behavioral Therapy</p>
+        </div>
+    </div>
+
+    <div class="doctor1">
+        <img src="img/doctor4.jpg" alt="Doctor 4">
+        <div class="doctor-details">
+            <h2>Dr. Michael Brown</h2>
+            <p>Dr. Michael Brown is a skilled neurologist known for his expertise in treating neurological disorders. He focuses on delivering comprehensive care and support to his patients.</p>
+            <p>Services: Neurology, Neurological Disorders</p>
+        </div>
+    </div>
+
+    <div class="doctor1">
+        <img src="img/doctor5.jpg" alt="Doctor 5">
+        <div class="doctor-details">
+            <h2>Dr. Jennifer Adams</h2>
+            <p>Dr. Jennifer Adams is an experienced pediatrician dedicated to providing compassionate care to children and adolescents. She emphasizes preventive health measures for her young patients.</p>
+            <p>Services: Pediatrics, Child Health</p>
+        </div>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+        <div class="footer-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>123 Victoria St.<br>Kitchener, ON N2N 0A1</p>
+                <p>Phone: 948-123-5670<br>Email: harmonyhealth@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="viewAppointment">
+    <div data-role="header" data-theme="a">
+        <div class="header-content">
+            <div class="header-section">
+                <h3>Harmony Healthcare Institute</h3>
+                <p>Experienced And Excellence in Healthcare</p>
+                <nav data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+                        <li><a href="#doctorInfo" data-transition="slide" data-icon="user">Staff Information</a></li>
+                        <li><a href="#services" data-transition="slide" data-icon="grid">Services</a></li>
+                        <li><a href="#appointment" data-transition="slide" data-icon="calendar">Appointment</a></li>
+                        <li><a href="#viewAppointment" data-transition="slide" data-icon="bars" class="ui-btn-active">View Appointment</a></li>
+                        <li><a href="#about" data-transition="slide" data-icon="info">About</a></li>
+                        <li><a href="#map-page" data-transition="slide" data-icon="location">Locations</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div role="main" class="ui-content">
+        <h1>Recent Reservations</h1>
+        <ul data-role="listview" data-inset="true" data-split-icon="gear" id="listviewAppointment" >
+            Click to see all appointments
+        </ul>
+
+    </div>
+
+    <div data-role="footer" data-theme="b">
+        <div class="footer-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>123 Victoria St.<br>Kitchener, ON N2N 0A1</p>
+                <p>Phone: 948-123-5670<br>Email: harmonyhealth@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="services">
+    <div data-role="header" data-theme="a">
+        <div class="header-content">
+            <div class="header-section">
+                <h3>Harmony Healthcare Institute</h3>
+                <p>Experienced And Excellence in Healthcare</p>
+                <nav data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+                        <li><a href="#doctorInfo" data-transition="slide" data-icon="user">Staff Information</a></li>
+                        <li><a href="#services" data-transition="slide" data-icon="grid" class="ui-btn-active">Services</a></li>
+                        <li><a href="#appointment" data-transition="slide" data-icon="calendar">Appointment</a></li>
+                        <li><a href="#viewAppointment" data-transition="slide" data-icon="bars">View Appointment</a></li>
+                        <li><a href="#about" data-transition="slide" data-icon="info">About</a></li>
+                        <li><a href="#map-page" data-transition="slide" data-icon="location">Locations</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <h1>Services availble here</h1>
+    <div class="services">
+        <div class="service">
+            <img src="img/xray.jpg" alt="X-Ray">
+            <h2>X-Ray</h2>
+            <p>State-of-the-art X-ray services for accurate diagnosis.</p>
+        </div>
+
+        <div class="service">
+            <img src="img/ctscan.jpg" alt="CT Scan">
+            <h2>CT Scan</h2>
+            <p>Advanced CT scanning technology for detailed imaging.</p>
+        </div>
+
+        <div class="service">
+            <img src="img/ultrasound.jpg" alt="Ultrasound">
+            <h2>Ultrasound</h2>
+            <p>Ultrasound services for non-invasive medical examinations.</p>
+        </div>
+
+        <div class="service">
+            <img src="img/bloodtest.jpg" alt="Blood Test">
+            <h2>Blood Test</h2>
+            <p>Comprehensive blood testing for accurate health analysis.</p>
+        </div>
+
+        <div class="service">
+            <img src="img/endoscopy.jpg" alt="Endoscopy">
+            <h2>Endoscopy</h2>
+            <p>Specialized endoscopic procedures for internal examinations.</p>
+        </div>
+
+        <div class="service">
+            <img src="img/physiotherapy.jpg" alt="Physiotherapy">
+            <h2>Physiotherapy</h2>
+            <p>Professional physiotherapy sessions for rehabilitation and pain management.</p>
+        </div>
+    </div>
+
+    <div data-role="footer" data-theme="b">
+        <div class="footer-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>123 Victoria St.<br>Kitchener, ON N2N 0A1</p>
+                <p>Phone: 948-123-5670<br>Email: harmonyhealth@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="about">
+    <div data-role="header" data-theme="a">
+        <div class="header-content">
+            <div class="header-section">
+                <h3>Harmony Healthcare Institute</h3>
+                <p>Experienced And Excellence in Healthcare</p>
+                <nav data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+                        <li><a href="#doctorInfo" data-transition="slide" data-icon="user">Staff Information</a></li>
+                        <li><a href="#services" data-transition="slide" data-icon="grid" class="ui-btn-active">Services</a></li>
+                        <li><a href="#appointment" data-transition="slide" data-icon="calendar">Appointment</a></li>
+                        <li><a href="#viewAppointment" data-transition="slide" data-icon="bars">View Appointment</a></li>
+                        <li><a href="#about" data-transition="slide" data-icon="info">About</a></li>
+                        <li><a href="#map-page" data-transition="slide" data-icon="location">Locations</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div role="main" class="ui-content center-content">
+        <h2>Developers of this application</h2>
+        <div class="collapse">
+        <h3>Pratham Patel</h3>
+        <p>
+            <strong>Position:</strong> Lead Developer<br>
+            <strong>Contribution:</strong> Responsible for designing the user interface and implementing core functionalities related to patient management and appointment scheduling.
+        </p>
+        </div>
+        <div class="collapse">
+        <h3>Neel Savani</h3>
+        <p>
+            <strong>Position:</strong> Backend Developer<br>
+            <strong>Contribution:</strong> Developed the backend infrastructure, including databases and server-side functionalities for seamless data management and retrieval.
+        </p>
+        </div>
+
+        <div class="collapse">
+        <h3>Nitya Patel</h3>
+        <p>
+            <strong>Position:</strong> UI/UX Designer<br>
+            <strong>Contribution:</strong> Designed intuitive and user-friendly interfaces, ensuring a smooth and engaging user experience for patients and healthcare providers.
+        </p>
+        </div>
+
+        <div class="collapse">
+        <h3>Romnick Zinampan</h3>
+        <p>
+            <strong>Position:</strong> QA Tester <br>
+            <strong>Contribution:</strong> Conducted rigorous testing to identify and resolve bugs, ensuring the application's reliability and performance. Also make apk file for this app.
+        </p>
+        </div>
+
+        <div class="collapse">
+        <h2>Description</h2>
+        <p>
+            The team of developers comprising Pratham Patel, Neel Savani, Nitya Patel, and Romnick Zinampan collaborated to create a comprehensive hospital management application using HTML, CSS, JavaScript, and jQuery Mobile. Their combined efforts resulted in a functional and efficient application tailored to streamline hospital operations, including patient management, appointment scheduling, and a user-friendly interface for both staff and patients.
+        </p>
+        </div>
+    </div>
+    <div data-role="footer" data-theme="b">
+        <div class="footer-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>123 Victoria St.<br>Kitchener, ON N2N 0A1</p>
+                <p>Phone: 948-123-5670<br>Email: harmonyhealth@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="map-page">
+    <div data-role="header" data-theme="a">
+        <div class="header-content">
+            <div class="header-section">
+                <h3>Harmony Healthcare Institute</h3>
+                <p>Experienced And Excellence in Healthcare</p>
+                <nav data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li><a href="#home" data-transition="slide" data-icon="home">Home</a></li>
+                        <li><a href="#doctorInfo" data-transition="slide" data-icon="user">Staff Information</a></li>
+                        <li><a href="#services" data-transition="slide" data-icon="grid">Services</a></li>
+                        <li><a href="#appointment" data-transition="slide" data-icon="calendar">Appointment</a></li>
+                        <li><a href="#viewAppointment" data-transition="slide" data-icon="bars">View Appointment</a></li>
+                        <li><a href="#about" data-transition="slide" data-icon="info">About</a></li>
+                        <li><a href="#map-page" data-transition="slide" data-icon="location" class="ui-btn-active">Locations</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div role="main" class="ui-content center-content">
+        <h2>See nearby hospitals</h2>
+        <button type="button" id="btnShow" name="btnShow" data-icon="plus" data-iconpos="left" data-theme="a"
+                data-inline="true" class="ui-btn-active">Search</button>
+    </div>
+
+    <div style="width: 100%; height: 100%" id="mapContainer"></div>
+    <div data-role="footer" data-theme="b">
+        <div class="footer-content">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <div class="contact">
+                <h3>Contact Us</h3>
+                <p>123 Victoria St.<br>Kitchener, ON N2N 0A1</p>
+                <p>Phone: 948-123-5670<br>Email: harmonyhealth@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

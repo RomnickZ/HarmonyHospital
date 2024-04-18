@@ -1,0 +1,323 @@
+/* Resetting default margin and padding */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+/* Hospital name */
+.hospital-name {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: larger;
+    margin-bottom: 10px;
+}
+h3{
+    text-align: center;
+}
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+nav{
+    margin: 3%;
+    padding: 2px;
+}
+nav ul {
+    list-style: none;
+    text-align: center;
+    margin-top: 15px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+}
+
+/* Styles for intro section */
+
+.hospital-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.half-width {
+    width: calc(100% - 30px);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.half-width img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.half-width h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.half-width p {
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+/* Styles for departments section */
+.departments {
+    text-align: center;
+}
+
+.departments h2 {
+    font-size: 24px; /* Adjust heading font size */
+    margin-bottom: 15px;
+}
+
+img{
+    margin: 10px;
+    width: 360px;
+    height: 300px;
+}
+.doctor {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.doctor-info:hover {
+    transform: scale(1.1);
+}
+.doctor-info {
+    text-align: center;
+    width: 30%;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.doctor-info img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.doctor-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.doctor-info p {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 18px; /* Adjust label font size */
+    margin-bottom: 10px;
+}
+
+select {
+    width: 200px; /* Adjust select width */
+    padding: 8px;
+    font-size: 16px; /* Adjust select font size */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+/* Footer styling */
+footer {
+    height: 20%;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    height: 20%;
+}
+
+
+.footer-content .contact {
+    display: flex;
+    flex-direction: column;
+    margin-right: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-content .logo img {
+    width: 30%;
+    height: auto;
+    padding: 20px;
+}
+
+
+.header-content {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.header-section {
+    margin-right: 30px;
+}
+
+
+.header-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.header-section p {
+
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.collapse {
+    height: auto;
+    width: 80%;
+    max-width: 100%;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #5BC5B2, #F9B8AE ); /* Adjust gradient colors */
+    color: black;
+    padding: 20px;
+    margin: 2% 8%;
+}
+
+.collapse label,
+.collapse input,
+.collapse select,
+.collapse textarea,
+.collapse button {
+    width: 100%;
+}
+.collapse label{
+    text-align: center;
+    padding-top: 10px;
+    font-size: 20px;
+}
+.collapse input{
+    border: 2px solid black;
+}
+.collapse button {
+    margin-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #071108;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+td a{
+    text-decoration: none;
+    color: brown;
+}
+.doctor1 {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid black;
+    background: linear-gradient(to bottom, #5BC5B2, #F9B8AE ); /* Adjust gradient colors */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.doctor1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    max-width: 30%;
+    margin-right: 30px;
+
+}
+
+.doctor-details {
+    max-width: 70%;
+}
+
+.doctor1 h2 {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.doctor1 p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 2%;
+}
+
+.service {
+    border: 2px solid black;
+    background: linear-gradient(to bottom, #5BC5B2, #F9B8AE ); /* Adjust gradient colors */
+    border-radius: 5px;
+    padding: 20px;
+    width: 40%;
+    text-align: center;
+}
+
+.service img {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 2px solid black;
+    margin:10px 10px 10px -2px ;
+    height: 160px;
+}
+#services h1{
+    text-align: center;
+    margin-top:10px;
+}
+label.error{
+    color: #F00;
+    font-weight: bold;
+}
+input.error,
+select.error,
+textarea.error {
+    border: 1px red solid;
+}
+#map-page {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
